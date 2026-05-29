@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volle Digital – IT & Digitalisierung für Handwerker</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1f2e;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:#1a1f2e;border-bottom:1px solid rgba(255,255,255,.07);padding:0 72px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.nlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nbar{width:4px;height:26px;background:#F97316;border-radius:3px}
+.nname{font-size:17px;font-weight:700;color:#fff;letter-spacing:-.3px}
+.nname span{color:#F97316}
+.nlinks{display:flex;align-items:center;gap:36px;list-style:none}
+.nlinks a{font-size:14px;color:rgba(255,255,255,.6);text-decoration:none;font-weight:500;transition:color .15s}
+.nlinks a:hover{color:#fff}
+.ncta{background:transparent!important;color:#fff!important;border:1.5px solid rgba(255,255,255,.3)!important;padding:9px 24px;border-radius:8px;font-weight:600!important;font-size:14px!important;transition:all .15s!important}
+.ncta:hover{border-color:#F97316!important;color:#F97316!important}
+
+/* HERO – full viewport height minus nav */
+.hero-wrap{background:#1a1f2e;min-height:calc(100vh - 68px);display:flex;align-items:center}
+.hero{width:100%;max-width:1280px;margin:0 auto;padding:80px 72px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:72px}
+
+/* BADGE OPTION 4 */
+.hero-badge{display:inline-flex;flex-direction:column;gap:3px;background:rgba(249,115,22,0.12);border:1.5px solid rgba(249,115,22,0.35);border-radius:14px;padding:14px 22px;margin-bottom:28px}
+.hpulse{display:none}
+.hero-badge-top{font-size:11px;font-weight:700;color:#F97316;letter-spacing:2px;text-transform:uppercase}
+.hero-badge span{font-size:19px;font-weight:700;color:#fff;letter-spacing:-.2px}
+
+.hero h1{font-size:58px;font-weight:800;line-height:1.1;letter-spacing:-2px;color:#fff;margin-bottom:20px}
+.hero h1 em{color:#F97316;font-style:normal}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.58);line-height:1.75;margin-bottom:40px;max-width:460px}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-p{background:#F97316;color:#fff;padding:15px 30px;border-radius:9px;font-size:15px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s;display:inline-flex;align-items:center;letter-spacing:-.1px}
+.btn-p:hover{background:#EA6A0A}
+.btn-g{background:transparent;color:#fff;padding:15px 30px;border-radius:9px;font-size:15px;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.28);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;letter-spacing:-.1px}
+.btn-g:hover{border-color:#F97316;color:#F97316}
+
+/* HERO RIGHT CARDS */
+.hcards{display:flex;flex-direction:column;gap:12px}
+.hcard{background:#242938;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px 26px;display:flex;align-items:center;gap:20px;transition:border-color .2s}
+.hcard:hover{border-color:rgba(249,115,22,.35)}
+.hcicon{width:50px;height:50px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.hct{font-size:17px;font-weight:600;color:#fff;margin-bottom:4px}
+.hcs{font-size:14px;color:rgba(255,255,255,.45);line-height:1.4}
+
+/* STATS */
+.stats{background:#141824;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:44px 72px}
+.stats-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:10px;position:relative}
+.stat+.stat::before{content:'';position:absolute;left:0;top:10%;bottom:10%;width:1px;background:rgba(255,255,255,.08)}
+.snum{font-family:'DM Mono',monospace;font-size:40px;font-weight:700;color:#F97316;letter-spacing:-1.5px;line-height:1}
+.slbl{font-size:13px;color:rgba(255,255,255,.42);margin-top:8px;font-weight:500}
+
+/* SECTIONS – light */
+.sec-light{background:#fff;padding:100px 72px}
+.sec-gray{background:#f8f9fb;padding:100px 72px}
+.sec-dark{background:#1a1f2e;padding:100px 72px}
+.sec-in{max-width:1280px;margin:0 auto}
+.stag{font-size:11px;font-weight:700;color:#F97316;text-transform:uppercase;letter-spacing:3px;margin-bottom:12px}
+.stitle{font-size:38px;font-weight:800;color:#1a1f2e;letter-spacing:-1.2px;margin-bottom:12px;line-height:1.2}
+.stitle-dark{color:#fff}
+.ssub{font-size:16px;color:#6b7280;max-width:540px;line-height:1.75;margin-bottom:56px}
+.ssub-dark{color:rgba(255,255,255,.5)}
+
+/* LEISTUNGEN */
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.lcard{background:#fff;border:1.5px solid #e5e7eb;border-radius:16px;padding:28px;transition:all .2s}
+.lcard:hover{border-color:#F97316;box-shadow:0 6px 24px rgba(249,115,22,.08);transform:translateY(-3px)}
+.lico{font-size:28px;margin-bottom:16px;display:block}
+.ltit{font-size:18px;font-weight:700;color:#1a1f2e;margin-bottom:10px}
+.ltxt{font-size:15px;color:#6b7280;line-height:1.7;margin-bottom:20px}
+.lprice{font-family:'DM Mono',monospace;font-size:14px;color:#F97316;padding-top:16px;border-top:1px solid #f3f4f6;font-weight:500}
+
+/* PROZESS */
+.pwrap{background:#fff;border:1.5px solid #e5e7eb;border-radius:18px;overflow:hidden}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr)}
+.pstep{padding:36px 28px;border-right:1.5px solid #e5e7eb;transition:background .2s}
+.pstep:last-child{border-right:none}
+.pstep:hover{background:#fffbf8}
+.pnr{font-family:'DM Mono',monospace;font-size:12px;color:#F97316;font-weight:600;margin-bottom:16px;letter-spacing:2px}
+.pico{font-size:32px;margin-bottom:14px}
+.ptit{font-size:16px;font-weight:700;color:#1a1f2e;margin-bottom:9px}
+.ptxt{font-size:14px;color:#6b7280;line-height:1.65}
+
+/* TOOLS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tcard{background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;padding:22px 24px;display:flex;align-items:flex-start;gap:18px;transition:border-color .2s}
+.tcard:hover{border-color:#F97316}
+.temoji{font-size:28px;width:54px;height:54px;display:flex;align-items:center;justify-content:center;background:#f8f9fb;border:1px solid #e5e7eb;border-radius:12px;flex-shrink:0}
+.tname{font-size:16px;font-weight:700;color:#1a1f2e;margin-bottom:6px}
+.tdesc{font-size:14px;color:#6b7280;line-height:1.65}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:5fr 4fr;gap:80px;align-items:start}
+.aavatar{width:80px;height:80px;background:#242938;border:2px solid rgba(249,115,22,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#F97316;margin-bottom:22px;font-family:'DM Mono',monospace}
+.aname{font-size:28px;font-weight:800;color:#1a1f2e;letter-spacing:-.5px;margin-bottom:6px}
+.arole{font-size:15px;color:#F97316;font-weight:600;margin-bottom:20px}
+.atxt{font-size:16px;color:#4b5563;line-height:1.85;margin-bottom:30px}
+.afacts{display:flex;flex-direction:column;gap:12px}
+.afact{background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px;transition:border-color .2s}
+.afact:hover{border-color:#F97316}
+.afico{font-size:22px;width:38px;text-align:center;flex-shrink:0}
+.aftit{font-size:15px;font-weight:600;color:#1a1f2e}
+.afsub{font-size:13px;color:#6b7280;margin-top:3px}
+
+/* CTA */
+.cta-in{max-width:600px;margin:0 auto;text-align:center}
+.ctatag{font-size:11px;font-weight:700;color:#F97316;text-transform:uppercase;letter-spacing:3px;margin-bottom:14px}
+.ctatit{font-size:44px;font-weight:800;color:#fff;letter-spacing:-1.5px;margin-bottom:16px;line-height:1.15}
+.ctatit span{color:#F97316}
+.ctasub{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:36px;line-height:1.75}
+.kform{background:#242938;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;margin-top:32px;text-align:left;max-width:500px;margin-left:auto;margin-right:auto}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.fg label{font-size:11px;color:rgba(255,255,255,.45);font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.fg input,.fg select,.fg textarea{background:#1a1f2e;border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px 14px;font-size:14px;color:#fff;font-family:'Inter',sans-serif;outline:none;width:100%;transition:border .15s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#F97316}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.25)}
+.fg textarea{resize:vertical;min-height:90px}
+select option{background:#242938;color:#fff}
+.fsuccess{display:none;text-align:center;padding:24px;color:#10B981;font-size:15px;font-weight:600}
+.ctacontact{display:flex;gap:28px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.ctaci{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.38)}
+
+/* FOOTER */
+footer{background:#0f1219;border-top:1px solid rgba(255,255,255,.06);padding:28px 72px;display:flex;justify-content:space-between;align-items:center}
+.flogo{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;color:#fff;letter-spacing:-.3px}
+.flogo span{color:#fff}
+.flogo span span{color:#F97316}
+.flogo span{color:#F97316}
+.fmark{width:3px;height:20px;background:#F97316;border-radius:2px}
+.flinks{display:flex;gap:24px;list-style:none}
+.flinks a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s}
+.flinks a:hover{color:rgba(255,255,255,.6)}
+.fcopy{font-size:12px;color:rgba(255,255,255,.22)}
+
+/* DIVIDER */
+hr.div{border:none;border-top:1px solid #e5e7eb}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav,.hero,.stats,.sec-light,.sec-gray,.sec-dark,footer{padding-left:32px;padding-right:32px}
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:60px;padding-bottom:60px;gap:40px}
+  .hero h1{font-size:40px}
+  .stats-in{grid-template-columns:repeat(2,1fr)}
+  .lgrid,.tgrid{grid-template-columns:1fr 1fr}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .pstep:nth-child(2){border-right:none}
+  .pstep:nth-child(3){border-right:1.5px solid #e5e7eb}
+  .pstep:nth-child(4){border-right:none}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  footer{flex-direction:column;gap:16px;text-align:center}
+}
+@media(max-width:640px){
+  nav{padding:0 20px}
+  .nlinks{display:none}
+  .hero h1{font-size:32px}
+  .lgrid,.tgrid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr}
+  .pstep{border-right:none!important;border-bottom:1.5px solid #e5e7eb}
+  .pstep:last-child{border-bottom:none}
+  .frow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nlogo" href="#">
+    <div class="nbar"></div>
+    <div class="nname">VOLLE<span>.DIGITAL</span></div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#rundum">Rundum-Service</a></li>
+    <li><a href="#prozess">Ablauf</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#ueber-mich">Über mich</a></li>
+    <li><a href="#kontakt" class="ncta">Erstgespräch buchen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <section class="hero">
+    <div>
+      <div class="hero-badge">
+        <div class="hero-badge-top">Dein Spezialist für</div>
+        <span>IT & Digitalisierung – Handwerk & kleine Betriebe</span>
+      </div>
+      <h1>Weniger Büro.<br>Mehr <em>Vollgas.</em></h1>
+      <p class="hero-sub">Ich richte die richtigen digitalen Tools und Hardware für Ihren Betrieb ein – erkläre sie Ihren Mitarbeitern – und bleibe als persönlicher Ansprechpartner an Ihrer Seite.</p>
+      <div class="hbtns">
+        <a href="#kontakt" class="btn-p">Kostenloses Erstgespräch</a>
+        <a href="#leistungen" class="btn-g">Leistungen ansehen</a>
+      </div>
+    </div>
+    <div class="hcards">
+      <div class="hcard"><div class="hcicon">🧾</div><div><div class="hct">Angebote & Rechnungen automatisieren</div><div class="hcs">Spart bis zu 5 Stunden Büroarbeit pro Woche</div></div></div>
+      <div class="hcard"><div class="hcicon">⏱️</div><div><div class="hct">Zeiterfassung digital & rechtssicher</div><div class="hcs">Mitarbeiter stempeln per App – auf der Baustelle</div></div></div>
+      <div class="hcard"><div class="hcicon">📱</div><div><div class="hct">Mitarbeiter schulen & begleiten</div><div class="hcs">In 1–2 Stunden sind alle startklar</div></div></div>
+      <div class="hcard"><div class="hcicon">🤝</div><div><div class="hct">Monatlicher Support inklusive</div><div class="hcs">Persönlich erreichbar – kein Callcenter</div></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-in">
+    <div class="stat"><div class="snum">20+</div><div class="slbl">Jahre IT-Erfahrung</div></div>
+    <div class="stat"><div class="snum">6</div><div class="slbl">Top-Tools für Handwerker</div></div>
+    <div class="stat"><div class="snum">30 Min</div><div class="slbl">Erstgespräch – kostenlos</div></div>
+    <div class="stat"><div class="snum">100%</div><div class="slbl">Persönlicher Service</div></div>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<div class="sec-light" id="leistungen">
+  <div class="sec-in">
+    <div class="stag">Leistungen</div>
+    <div class="stitle">Was ich für Sie tue</div>
+    <p class="ssub">Kein Fachchinesisch. Kein Overkill. Nur das was Ihr Betrieb wirklich braucht – und ich erkläre Ihnen alles verständlich.</p>
+    <div class="lgrid">
+      <div class="lcard"><span class="lico">🔍</span><div class="ltit">Analyse & Empfehlung</div><p class="ltxt">Ich schaue mir Ihre aktuellen Abläufe an und empfehle genau die Tools, die zu Ihrem Betrieb passen – nicht mehr und nicht weniger.</p><div class="lprice">ab 150 € pauschal</div></div>
+      <div class="lcard"><span class="lico">⚙️</span><div class="ltit">Einrichtung & Integration</div><p class="ltxt">Ich richte alle Tools ein, verbinde sie miteinander und sorge dafür, dass alles sofort funktioniert. Sie müssen nichts selbst konfigurieren.</p><div class="lprice">ab 200 € pauschal</div></div>
+      <div class="lcard"><span class="lico">🎓</span><div class="ltit">Schulung der Mitarbeiter</div><p class="ltxt">Ich schule Ihr Team direkt vor Ort oder per Video – praxisnah, verständlich, ohne Stress. In 1–2 Stunden sind alle sicher im Umgang.</p><div class="lprice">ab 80 €/Stunde</div></div>
+      <div class="lcard"><span class="lico">📞</span><div class="ltit">Monatlicher Support</div><p class="ltxt">Ich bleibe als Ansprechpartner an Ihrer Seite. Fragen, Probleme, Updates – Sie erreichen mich direkt. Kein Callcenter, keine Warteschleife.</p><div class="lprice">ab 150 €/Monat</div></div>
+      <div class="lcard"><span class="lico">🔄</span><div class="ltit">Automatisierungen</div><p class="ltxt">Ich verbinde Ihre Tools miteinander – z.B. neuer Auftrag → automatisch Termin im Kalender → Kundenmail. Ohne Programmierung, ohne Aufwand für Sie.</p><div class="lprice">Auf Anfrage</div></div>
+      <div class="lcard"><span class="lico">🤝</span><div class="ltit">Erstgespräch – kostenlos</div><p class="ltxt">30 Minuten, unverbindlich, per Telefon oder Video. Ich höre zu, verstehe Ihre Situation und sage Ihnen ehrlich was Sinn macht – und was nicht.</p><div class="lprice">Kostenlos & unverbindlich</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROZESS -->
+<div class="sec-dark" id="prozess">
+  <div class="sec-in">
+    <div class="stag">So läuft es ab</div>
+    <div class="stitle stitle-dark">Einfach. Klar. Vollgas.</div>
+    <p class="ssub ssub-dark">Von unserem ersten Gespräch bis zur fertigen Lösung – in 5 Schritten.</p>
+    <div class="pwrap" style="background:#242938;border-color:rgba(255,255,255,.08)">
+      <div class="pgrid">
+        <div class="pstep" style="border-color:rgba(255,255,255,.08)"><div class="pnr">01</div><div class="pico">☎️</div><div class="ptit" style="color:#fff">Erstgespräch</div><p class="ptxt" style="color:rgba(255,255,255,.55)">30 Min. kostenlos. Ich verstehe Ihre Abläufe und Probleme.</p></div>
+        <div class="pstep" style="border-color:rgba(255,255,255,.08)"><div class="pnr">02</div><div class="pico">📋</div><div class="ptit" style="color:#fff">Analyse</div><p class="ptxt" style="color:rgba(255,255,255,.55)">Ich empfehle die passenden Tools – mit klarer Begründung und Preisangabe.</p></div>
+        <div class="pstep" style="border-color:rgba(255,255,255,.08)"><div class="pnr">03</div><div class="pico">⚙️</div><div class="ptit" style="color:#fff">Einrichtung</div><p class="ptxt" style="color:rgba(255,255,255,.55)">Ich richte alles ein – remote oder vor Ort. Sie müssen nichts tun.</p></div>
+        <div class="pstep" style="border-color:rgba(255,255,255,.08)"><div class="pnr">04</div><div class="pico">🎓</div><div class="ptit" style="color:#fff">Schulung</div><p class="ptxt" style="color:rgba(255,255,255,.55)">Ihr Team lernt das System in 1–2 Stunden kennen. Praxisnah & einfach.</p></div>
+        <div class="pstep" style="border-color:rgba(255,255,255,.08)"><div class="pnr">05</div><div class="pico">🚀</div><div class="ptit" style="color:#fff">Go Live</div><p class="ptxt" style="color:rgba(255,255,255,.55)">Sie arbeiten digital. Ich bleibe als Support an Ihrer Seite.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="sec-light" id="tools">
+  <div class="sec-in">
+    <div class="stag">Tools</div>
+    <div class="stitle">Die besten Tools für Handwerker</div>
+    <p class="ssub">Ich arbeite mit den bewährtesten digitalen Werkzeugen – und kenne ihre Stärken und Schwächen aus eigener Erfahrung.</p>
+    <div class="tgrid">
+      <div class="tcard"><div class="temoji">📄</div><div><div class="tname">Plancraft</div><div class="tdesc">Angebote & Rechnungen in Minuten – speziell für Handwerksbetriebe entwickelt.</div></div></div>
+      <div class="tcard"><div class="temoji">📊</div><div><div class="tname">lexoffice</div><div class="tdesc">Buchhaltung & Rechnungen in einem System – DATEV-kompatibel für den Steuerberater.</div></div></div>
+      <div class="tcard"><div class="temoji">🏗️</div><div><div class="tname">ToolTime</div><div class="tdesc">Auftragsmanagement & Einsatzplanung – funktioniert auch offline auf der Baustelle.</div></div></div>
+      <div class="tcard"><div class="temoji">⏱️</div><div><div class="tname">Crewmeister</div><div class="tdesc">Zeiterfassung per App – rechtssicher, DSGVO-konform, in 5 Minuten eingerichtet.</div></div></div>
+      <div class="tcard"><div class="temoji">📧</div><div><div class="tname">Google Workspace</div><div class="tdesc">Professionelle E-Mail-Adresse, Kalender & Cloud-Speicher für Ihren Betrieb.</div></div></div>
+      <div class="tcard"><div class="temoji">🔄</div><div><div class="tname">Make.com</div><div class="tdesc">Automatisierungen ohne Programmierung – verbindet alle Ihre Tools miteinander.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RUNDUM SERVICE -->
+<div class="sec-dark" id="rundum">
+  <div class="sec-in">
+    <div class="stag" style="color:#F97316">Rundum-Service</div>
+    <div class="stitle stitle-dark">Alles aus einer Hand –<br>Software <em style="color:#F97316;font-style:normal">und</em> Hardware.</div>
+    <p class="ssub ssub-dark">Sie müssen nicht mehrere Dienstleister koordinieren. Ich kümmere mich um alles – von der digitalen Lösung bis zum letzten Kabel.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px">
+      <!-- Software -->
+      <div style="background:#242938;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px">
+        <div style="font-size:11px;font-weight:700;color:#F97316;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:16px">Software & Digitalisierung</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Analyse & Tool-Empfehlung</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Einrichtung & Integration</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Automatisierungen & Workflows</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Schulung der Mitarbeiter</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Monatlicher Support</span></div>
+        </div>
+      </div>
+      <!-- Hardware -->
+      <div style="background:#242938;border:1px solid rgba(249,115,22,.25);border-radius:16px;padding:28px">
+        <div style="font-size:11px;font-weight:700;color:#F97316;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:16px">Hardware & Infrastruktur</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Beratung & Beschaffung</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Aufbau & Installation</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Netzwerk, Firewall & Server</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Live-Stellung & Inbetriebnahme</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:7px;height:7px;border-radius:50%;background:#F97316;flex-shrink:0"></div><span style="font-size:15px;color:rgba(255,255,255,.85)">Schulung & laufender Service</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom highlight -->
+    <div style="background:rgba(249,115,22,.1);border:1.5px solid rgba(249,115,22,.3);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:20px">
+      <div style="font-size:36px;flex-shrink:0">🔧</div>
+      <div>
+        <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px">Ein Ansprechpartner für alles.</div>
+        <div style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.7">Kein Hin- und Herschieben zwischen verschiedenen Dienstleistern. Ich kenne Ihren Betrieb – Software und Hardware – und löse Probleme schnell und unkompliziert.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ÜBER MICH -->
+<div class="sec-light" id="ueber-mich">
+  <div class="sec-in">
+    <div class="about-grid">
+      <div>
+        <div class="stag">Über mich</div>
+        <div class="aavatar">VO</div>
+        <div class="aname">Volkan "Volle" Özcan</div>
+        <div class="arole">IT-Digitalisierungsbegleiter aus Olsberg</div>
+        <p class="atxt">Ich bin kein großes Unternehmen – ich bin eine Person mit über 20 Jahren IT-Erfahrung. Ich habe Infrastrukturen mit 350 Usern und 19 Servern betreut, ERP-Systeme eingeführt, Tracking-Systeme für Online-Shops gebaut und kleine Betriebe digitalisiert.<br><br>Dabei kenne ich beide Seiten der IT: Software <em>und</em> Hardware. Von der Firewall über Netzwerke bis zum Arbeitsplatz – ich berate, beschaffe und bringe alles zum Laufen.<br><br>Bei mir gibt es keinen Callcenter-Support und keine anonymen Tickets. Sie sprechen mit mir – direkt, ehrlich und auf Augenhöhe. Ich sage Ihnen auch, wenn etwas keinen Sinn macht.</p>
+        <a href="#kontakt" class="btn-p">Jetzt Gespräch vereinbaren</a>
+      </div>
+      <div class="afacts">
+        <div class="afact"><div class="afico">🏭</div><div><div class="aftit">Automobilindustrie – 13 Jahre</div><div class="afsub">IT-Verantwortung für 350 User & 19 Server</div></div></div>
+        <div class="afact"><div class="afico">👕</div><div><div class="aftit">Textilindustrie – 4 Jahre</div><div class="afsub">IT-Administration & Produktionssteuerung</div></div></div>
+        <div class="afact"><div class="afico">📊</div><div><div class="aftit">Affiliate & E-Commerce</div><div class="afsub">Tracking-Systeme & digitales Marketing</div></div></div>
+        <div class="afact"><div class="afico">🌍</div><div><div class="aftit">3 Sprachen</div><div class="afsub">Deutsch, Englisch & Türkisch</div></div></div>
+        <div class="afact"><div class="afico">📍</div><div><div class="aftit">Olsberg / Region Hochsauerland</div><div class="afsub">Vor Ort & deutschlandweit remote</div></div></div>
+      </div>    </div>
+  </div>
+</div>
+
+<!-- CTA / KONTAKT -->
+<div class="sec-dark" id="kontakt">
+  <div class="cta-in">
+    <div class="ctatag">Kontakt</div>
+    <div class="ctatit">Bereit für weniger<br><span>Papierkram?</span></div>
+    <p class="ctasub">30 Minuten Erstgespräch – kostenlos, unverbindlich, per Telefon oder Video. Ich höre zu und sage Ihnen ehrlich was hilft.</p>
+    <a href="#kform" class="btn-p" style="display:inline-flex;margin:0 auto">Jetzt Termin vereinbaren</a>
+    <div class="kform" id="kform">
+      <div id="form-content">
+        <div class="frow">
+          <div class="fg"><label>Vorname</label><input id="f-name" type="text" placeholder="Max"></div>
+          <div class="fg"><label>Betrieb / Firma</label><input id="f-firma" type="text" placeholder="Muster GmbH"></div>
+        </div>
+        <div class="fg"><label>Telefon oder E-Mail</label><input id="f-contact" type="text" placeholder="+49 170 ... oder max@firma.de"></div>
+        <div class="fg">
+          <label>Größtes Problem im Büro?</label>
+          <select id="f-problem">
+            <option>Angebote & Rechnungen kosten zu viel Zeit</option>
+            <option>Zeiterfassung ist umständlich</option>
+            <option>Kundendaten sind überall verteilt</option>
+            <option>Ich weiß nicht wo ich anfangen soll</option>
+            <option>Anderes</option>
+          </select>
+        </div>
+        <div class="fg"><label>Kurze Nachricht (optional)</label><textarea id="f-msg" placeholder="Was soll ich über Ihren Betrieb wissen?"></textarea></div>
+        <button class="btn-p" style="width:100%;justify-content:center" onclick="submitForm()">Erstgespräch anfragen →</button>
+      </div>
+      <div class="fsuccess" id="form-success">✅ Danke! Ich melde mich innerhalb von 24 Stunden bei Ihnen.</div>
+    </div>
+    <div class="ctacontact">
+      <div class="ctaci">📞 +49 171 917 000 1</div>
+      <div class="ctaci">✉️ volle@volle.digital</div>
+      <div class="ctaci">🌐 volle.digital</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flogo"><div class="fmark"></div><span style="color:#fff;letter-spacing:-.3px">VOLLE<span style="color:#F97316">.DIGITAL</span></span></div>
+  <ul class="flinks">
+    <li><a href="#">Impressum</a></li>
+    <li><a href="#">Datenschutz</a></li>
+    <li><a href="mailto:volle@volle.digital">volle@volle.digital</a></li>
+    <li><a href="#" onclick="openCookieSettings();return false;">Cookie-Einstellungen</a></li>
+  </ul>
+  <div class="fcopy">© 2026 Volkan Özcan – Volle Digital</div>
+</footer>
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1f2e;border-top:2px solid #F97316;padding:24px 40px;box-shadow:0 -4px 24px rgba(0,0,0,.4)">
+  <div style="max-width:1280px;margin:0 auto">
+    <!-- Hauptansicht -->
+    <div id="cookie-main">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:8px">🍪 Cookie-Einstellungen</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6">Wir verwenden Cookies um die Nutzung der Website zu analysieren und unser Angebot zu verbessern. Notwendige Cookies sind immer aktiv. Statistik-Cookies (Google Analytics) helfen uns die Seite zu verbessern – nur mit Ihrer Zustimmung.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex-shrink:0">
+          <button onclick="openCookieDetails()" style="background:transparent;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s" onmouseover="this.style.borderColor='#F97316';this.style.color='#F97316'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)';this.style.color='rgba(255,255,255,.7)'">Anpassen</button>
+          <button onclick="rejectAll()" style="background:transparent;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s" onmouseover="this.style.borderColor='#F97316';this.style.color='#F97316'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)';this.style.color='rgba(255,255,255,.7)'">Nur notwendige</button>
+          <button onclick="acceptAll()" style="background:#F97316;border:none;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s" onmouseover="this.style.background='#EA6A0A'" onmouseout="this.style.background='#F97316'">Alle akzeptieren</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailansicht -->
+    <div id="cookie-details" style="display:none">
+      <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:16px">Cookie-Einstellungen anpassen</div>
+
+      <!-- Notwendig -->
+      <div style="background:#242938;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px 20px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:4px">Notwendige Cookies</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.5)">Technisch erforderlich für den Betrieb der Website. Können nicht deaktiviert werden.</div>
+        </div>
+        <div style="background:#F97316;color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;flex-shrink:0;margin-left:16px">Immer aktiv</div>
+      </div>
+
+      <!-- Statistik -->
+      <div style="background:#242938;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px 20px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:4px">Statistik – Google Analytics</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.5)">Helfen uns zu verstehen wie Besucher die Website nutzen. Daten werden anonymisiert.</div>
+        </div>
+        <label style="position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;margin-left:16px">
+          <input type="checkbox" id="toggle-stats" style="opacity:0;width:0;height:0">
+          <span onclick="toggleSwitch('toggle-stats','slider-stats')" id="slider-stats" style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#374151;border-radius:24px;transition:.3s"></span>
+          <span id="knob-stats" style="position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;pointer-events:none"></span>
+        </label>
+      </div>
+
+      <!-- Marketing -->
+      <div style="background:#242938;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:4px">Marketing</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.5)">Werden für gezielte Werbung verwendet. Aktuell nicht aktiv auf dieser Website.</div>
+        </div>
+        <label style="position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;margin-left:16px">
+          <input type="checkbox" id="toggle-marketing" style="opacity:0;width:0;height:0">
+          <span onclick="toggleSwitch('toggle-marketing','slider-marketing')" id="slider-marketing" style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#374151;border-radius:24px;transition:.3s"></span>
+          <span id="knob-marketing" style="position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;pointer-events:none"></span>
+        </label>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+        <button onclick="closeCookieDetails()" style="background:transparent;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit">Zurück</button>
+        <button onclick="saveSelection()" style="background:#F97316;border:none;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Auswahl speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── GOOGLE ANALYTICS – NUR MIT CONSENT ──
+const GA_ID = 'G-XXXXXXXXXX'; // ← Hier deine Measurement ID eintragen!
+
+function loadGA() {
+  if(document.getElementById('ga-script')) return;
+  const s = document.createElement('script');
+  s.id = 'ga-script';
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID, {anonymize_ip: true});
+}
+
+// ── TOGGLE SWITCH ──
+function toggleSwitch(checkId, sliderId) {
+  const cb = document.getElementById(checkId);
+  const sl = document.getElementById(sliderId);
+  const kn = document.getElementById('knob-' + checkId.replace('toggle-',''));
+  cb.checked = !cb.checked;
+  if(cb.checked) {
+    sl.style.background = '#F97316';
+    kn.style.left = '23px';
+  } else {
+    sl.style.background = '#374151';
+    kn.style.left = '3px';
+  }
+}
+
+// ── BANNER LOGIC ──
+function showBanner() {
+  document.getElementById('cookie-banner').style.display = 'block';
+}
+function hideBanner() {
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+function openCookieDetails() {
+  document.getElementById('cookie-main').style.display = 'none';
+  document.getElementById('cookie-details').style.display = 'block';
+}
+function closeCookieDetails() {
+  document.getElementById('cookie-details').style.display = 'none';
+  document.getElementById('cookie-main').style.display = 'block';
+}
+function openCookieSettings() {
+  document.getElementById('cookie-main').style.display = 'none';
+  document.getElementById('cookie-details').style.display = 'block';
+  showBanner();
+}
+function acceptAll() {
+  localStorage.setItem('cookie-consent', JSON.stringify({stats: true, marketing: true, ts: Date.now()}));
+  hideBanner();
+  loadGA();
+}
+function rejectAll() {
+  localStorage.setItem('cookie-consent', JSON.stringify({stats: false, marketing: false, ts: Date.now()}));
+  hideBanner();
+}
+function saveSelection() {
+  const stats = document.getElementById('toggle-stats').checked;
+  const marketing = document.getElementById('toggle-marketing').checked;
+  localStorage.setItem('cookie-consent', JSON.stringify({stats, marketing, ts: Date.now()}));
+  hideBanner();
+  if(stats) loadGA();
+}
+
+// ── INIT ──
+(function() {
+  const saved = localStorage.getItem('cookie-consent');
+  if(!saved) {
+    setTimeout(showBanner, 800);
+  } else {
+    const consent = JSON.parse(saved);
+    // Nach 6 Monaten neu fragen
+    if(Date.now() - consent.ts > 180 * 24 * 60 * 60 * 1000) {
+      localStorage.removeItem('cookie-consent');
+      setTimeout(showBanner, 800);
+    } else if(consent.stats) {
+      loadGA();
+    }
+  }
+})();
+
+// ── FORM & SCROLL ──
+async function submitForm(){
+  const vorname=document.getElementById('f-name').value.trim();
+  const kontakt=document.getElementById('f-contact').value.trim();
+  if(!vorname||!kontakt){alert('Bitte Name und Kontakt eingeben!');return;}
+
+  const btn=document.querySelector('#form-content .btn-p');
+  btn.textContent='Wird gesendet...';
+  btn.disabled=true;
+
+  const data={
+    vorname,
+    firma:document.getElementById('f-firma').value.trim(),
+    kontakt,
+    problem:document.getElementById('f-problem').value,
+    nachricht:document.getElementById('f-msg').value.trim()
+  };
+
+  try{
+    await fetch('https://script.google.com/macros/s/AKfycbyGZlv2Prfx1Sz1HDyP3a-0QN-Jr2iLedNgtYhwEmHeNw2m0dAa2cno8x_uEhGQ1O7Y/exec',{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+  }catch(e){
+    console.log('Fehler:', e);
+  }
+
+  document.getElementById('form-content').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  btn.textContent='Erstgespräch anfragen →';
+  btn.disabled=false;
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
